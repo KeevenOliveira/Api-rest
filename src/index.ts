@@ -1,4 +1,13 @@
-const sum = (a: number, b: number) => a + b;
+import express, { Request, Response } from "express";
 
-console.log("Hello World");
-console.log(sum(1, 4));
+const app = express();
+
+app.use(express.json());
+
+app.get("/settings", (req: Request, res: Response) => {
+  res.status(201).json({ message: "Hello World" });
+});
+
+app.listen(8080, () => {
+  console.log("Server starting!🚀");
+});
