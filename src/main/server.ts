@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express, { Request, Response } from "express";
 
 const app = express();

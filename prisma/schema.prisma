@@ -1,0 +1,35 @@
+datasource db {
+    url      = "mysql://mysql:123456@192.168.0.189:3306/api-rest"
+    provider = "mysql"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    email     String   @unique
+    name      String
+    password  String
+    token     String
+}
+
+model Product {
+    id          Int      @id @default(autoincrement())
+    createdAt   DateTime @default(now())
+    name        String
+    description String
+    quantity    Int
+    image       String?
+    price       Float
+}
+
+model Purchase {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    idProduct String
+    quantity  Int
+    owner     String
+}
