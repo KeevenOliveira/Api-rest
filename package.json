@@ -1,10 +1,10 @@
 {
   "name": "api-rest",
   "version": "1.0.0",
-  "description": "Docker, Sentry, TypeScript, MySQL, Redis, Prisma, Express, DDoS",
-  "main": "index.js",
+  "description": "Docker, Sentry, TypeScript, Postgres, Redis, Prisma, Express, DDoS",
+  "main": "src/main/server.js",
   "scripts": {
-    "dev": "ts-node-dev --inspect  --transpile-only --ignore-watch node_modules src/index.ts",
+    "dev": "ts-node-dev --inspect  --transpile-only --ignore-watch node_modules src/main/server.ts",
     "test": "npm test"
   },
   "repository": {

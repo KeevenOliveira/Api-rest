@@ -10,4 +10,5 @@ export default interface IUserRepository {
   findById(id: string): Promise<IUserDTO | undefined>;
   findByEmail(email: string): Promise<IUserDTO | undefined>;
   create(data: ICreateUser): Promise<IUserDTO>;
+  getAll(): Promise<IUserDTO | []>;
 }

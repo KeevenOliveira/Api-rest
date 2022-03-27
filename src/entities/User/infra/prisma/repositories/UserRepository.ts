@@ -1,8 +1,9 @@
 /* eslint-disable import/no-unresolved */
-import { ICreateUser } from "entities/User/dtos/ICreateUserDTO";
-import { IUserDTO } from "entities/User/dtos/IUserDTO";
-import IUserRepository from "entities/User/repositories/IUserRepository";
+// eslint-disable-next-line import/order
 import { PrismaClient } from "@prisma/client";
+import { ICreateUser } from "../../../dtos/ICreateUserDTO";
+import { IUserDTO } from "../../../dtos/IUserDTO";
+import IUserRepository from "../../../repositories/IUserRepository";
 
 class UsersRepository implements IUserRepository {
   private prisma = new PrismaClient();
@@ -35,6 +36,13 @@ class UsersRepository implements IUserRepository {
       where: { id },
     });
     return user as unknown as IUserDTO;
+  }
+
+  public async getAll(): Promise<IUserDTO> {
+    console.log("chegou aqui!");
+    const users = await this.prisma.user.findMany();
+
+    return users as unknown as IUserDTO;
   }
 }
 
