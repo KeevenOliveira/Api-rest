@@ -1,35 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 datasource db {
-    url      = "mysql://mysql:123456@192.168.0.189:3306/api-rest"
-    provider = "mysql"
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
 }
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model User {
-    id        Int      @id @default(autoincrement())
-    createdAt DateTime @default(now())
-    email     String   @unique
-    name      String
-    password  String
-    token     String
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email     String   @unique
+  name      String
+  password  String
+  token     String
+
+  @@map("user")
 }
 
 model Product {
-    id          Int      @id @default(autoincrement())
-    createdAt   DateTime @default(now())
-    name        String
-    description String
-    quantity    Int
-    image       String?
-    price       Float
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  name        String
+  description String
+  quantity    Int
+  image       String?
+  price       Float
+
+  @@map("product")
 }
 
 model Purchase {
-    id        Int      @id @default(autoincrement())
-    createdAt DateTime @default(now())
-    idProduct String
-    quantity  Int
-    owner     String
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  idProduct String
+  quantity  Int
+  owner     String
+
+  @@map("purchase")
 }

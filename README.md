@@ -1,3 +1,3 @@
 # Api-rest
 
-Docker, Sentry, TypeScript, MySQL, Redis, Prisma, Express, DDoS
+Docker, Sentry, TypeScript, Postgres, Redis, Prisma, Express, DDoS
