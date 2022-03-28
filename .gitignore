@@ -2,3 +2,4 @@
 package-lock.*
 yarn-lock.*
 .env
+yarn-error.log

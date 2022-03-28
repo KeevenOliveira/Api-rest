@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-unresolved */
 // eslint-disable-next-line import/order
 import { PrismaClient } from "@prisma/client";
@@ -6,14 +7,11 @@ import { IUserDTO } from "../../../dtos/IUserDTO";
 import IUserRepository from "../../../repositories/IUserRepository";
 
 class UsersRepository implements IUserRepository {
-  private prisma = new PrismaClient();
-
   public async create({
-    email,
-    name,
-    password,
+    body: { name, password, email },
   }: ICreateUser): Promise<IUserDTO> {
-    const user = await this.prisma.user.create({
+    const prisma = new PrismaClient();
+    const user = await prisma.user.create({
       data: {
         email,
         name,
@@ -25,23 +23,24 @@ class UsersRepository implements IUserRepository {
   }
 
   public async findByEmail(email: string): Promise<IUserDTO | undefined> {
-    const user = await this.prisma.user.findUnique({
+    const prisma = new PrismaClient();
+    const user = await prisma.user.findUnique({
       where: { email },
     });
     return user as unknown as IUserDTO;
   }
 
   public async findById(id: string): Promise<IUserDTO | undefined> {
-    const user = await this.prisma.user.findUnique({
+    const prisma = new PrismaClient();
+    const user = await prisma.user.findUnique({
       where: { id },
     });
     return user as unknown as IUserDTO;
   }
 
   public async getAll(): Promise<IUserDTO> {
-    console.log("chegou aqui!");
-    const users = await this.prisma.user.findMany();
-
+    const prisma = new PrismaClient();
+    const users = await prisma.user.findMany();
     return users as unknown as IUserDTO;
   }
 }

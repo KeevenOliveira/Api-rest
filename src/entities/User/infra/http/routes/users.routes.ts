@@ -9,10 +9,10 @@ const usersController = new UsersRepository();
 
 usersRouter.get("/users", usersController.getAll);
 
-usersRouter.post("user", usersController.create);
+usersRouter.post("/user", usersController.create);
 
-usersRouter.get("user", usersController.findByEmail);
+usersRouter.get("/user", usersController.findByEmail);
 
-usersRouter.get("user", usersController.findById);
+usersRouter.get("/user", usersController.findById);
 
 export default usersRouter;
