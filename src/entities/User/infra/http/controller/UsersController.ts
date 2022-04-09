@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import CreateUserService from "../../../useCases/CreateUserService";
+import GetAllUsersService from "../../../useCases/getAllUsersService";
 class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
     try {
@@ -20,7 +21,17 @@ class UsersController {
       };
       return response.status(200).json(userWithoutPassword);
     } catch (error) {
-      return response.status(400).json(error);
+      return response.status(400).json({ error: (error as Error).message });
+    }
+  }
+
+  public async getAll(request: Request, response: Response): Promise<Response> {
+    try {
+      const getAllUsersService = new GetAllUsersService();
+      const users = await getAllUsersService.getAllUsers();
+      response.status(200).json(users);
+    } catch (error) {
+      response.status(400).json({ error: (error as Error).message });
     }
   }
 }

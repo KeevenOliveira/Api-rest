@@ -31,9 +31,10 @@ class UsersRepository {
     return user as unknown as User;
   }
 
-  public async getAll(): Promise<User> {
+  public async getAll(): Promise<[User]> {
     const users = await prisma.user.findMany();
-    return users as unknown as User;
+    console.log("users", users);
+    return users as [User];
   }
 }
 
