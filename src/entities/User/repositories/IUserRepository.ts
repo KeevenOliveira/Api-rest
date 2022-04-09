@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 // eslint-disable-next-line import/no-unresolved
+import { Request, response } from "express";
 import { ICreateUser } from "../dtos/ICreateUserDTO";
 import { IUserDTO } from "../dtos/IUserDTO";
 

@@ -1,16 +1,11 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable import/no-unresolved */
-// eslint-disable-next-line import/order
-import { PrismaClient } from "@prisma/client";
+import { User } from "@prisma/client";
 import { ICreateUser } from "../../../dtos/ICreateUserDTO";
-import { IUserDTO } from "../../../dtos/IUserDTO";
-import IUserRepository from "../../../repositories/IUserRepository";
+// import { IUserDTO } from "../../../dtos/IUserDTO";
+// import IUserRepository from "../../../repositories/IUserRepository";
+import prisma from "../../../../../shared/infra/prisma/client";
 
-class UsersRepository implements IUserRepository {
-  public async create({
-    body: { name, password, email },
-  }: ICreateUser): Promise<IUserDTO> {
-    const prisma = new PrismaClient();
+class UsersRepository {
+  public async create({ name, password, email }: ICreateUser): Promise<User> {
     const user = await prisma.user.create({
       data: {
         email,
@@ -19,29 +14,26 @@ class UsersRepository implements IUserRepository {
         token: "keeven",
       },
     });
-    return user as unknown as IUserDTO;
+    return user as unknown as User;
   }
 
-  public async findByEmail(email: string): Promise<IUserDTO | undefined> {
-    const prisma = new PrismaClient();
+  public async findByEmail(email: string): Promise<User | undefined> {
     const user = await prisma.user.findUnique({
       where: { email },
     });
-    return user as unknown as IUserDTO;
+    return user as unknown as User;
   }
 
-  public async findById(id: string): Promise<IUserDTO | undefined> {
-    const prisma = new PrismaClient();
+  public async findById(id: string): Promise<User | undefined> {
     const user = await prisma.user.findUnique({
       where: { id },
     });
-    return user as unknown as IUserDTO;
+    return user as unknown as User;
   }
 
-  public async getAll(): Promise<IUserDTO> {
-    const prisma = new PrismaClient();
+  public async getAll(): Promise<User> {
     const users = await prisma.user.findMany();
-    return users as unknown as IUserDTO;
+    return users as unknown as User;
   }
 }
 

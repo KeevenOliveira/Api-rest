@@ -7,12 +7,12 @@ const usersRouter = Router();
 
 const usersController = new UsersRepository();
 
-usersRouter.get("/users", usersController.getAll);
+usersRouter.get("/", usersController.getAll);
 
-usersRouter.post("/user", usersController.create);
+usersRouter.post("/", usersController.create);
 
-usersRouter.get("/user", usersController.findByEmail);
+usersRouter.get("/email/:email", usersController.findByEmail);
 
-usersRouter.get("/user", usersController.findById);
+usersRouter.get("/id/:id", usersController.findById);
 
 export default usersRouter;
