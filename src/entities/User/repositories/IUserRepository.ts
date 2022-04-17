@@ -1,15 +1,11 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable semi */
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
-// eslint-disable-next-line import/no-unresolved
-import { Request, response } from "express";
+/* eslint-disable semi */
+import { User } from "@prisma/client";
 import { ICreateUser } from "../dtos/ICreateUserDTO";
-import { IUserDTO } from "../dtos/IUserDTO";
 
 export default interface IUserRepository {
-  findById(id: string): Promise<IUserDTO | undefined>;
-  findByEmail(email: string): Promise<IUserDTO | undefined>;
-  create(data: ICreateUser): Promise<IUserDTO>;
-  getAll(): Promise<IUserDTO>;
+  findById(id: string): Promise<User | undefined>;
+  findByEmail(email: string): Promise<User | undefined>;
+  create(data: ICreateUser): Promise<User>;
+  getAll(): Promise<User[]>;
 }

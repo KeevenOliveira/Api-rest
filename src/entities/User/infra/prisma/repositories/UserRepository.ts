@@ -1,10 +1,9 @@
 import { User } from "@prisma/client";
 import { ICreateUser } from "../../../dtos/ICreateUserDTO";
-// import { IUserDTO } from "../../../dtos/IUserDTO";
-// import IUserRepository from "../../../repositories/IUserRepository";
 import prisma from "../../../../../shared/infra/prisma/client";
+import IUserRepository from "../../../repositories/IUserRepository";
 
-class UsersRepository {
+class UsersRepository implements IUserRepository {
   public async create({ name, password, email }: ICreateUser): Promise<User> {
     const user = await prisma.user.create({
       data: {
@@ -17,23 +16,30 @@ class UsersRepository {
     return user as unknown as User;
   }
 
-  public async findByEmail(email: string): Promise<User | undefined> {
+  public async findByEmail(email: string): Promise<User> {
     const user = await prisma.user.findUnique({
       where: { email },
     });
-    return user as unknown as User;
+    if (!user) {
+      throw new Error("Não existe usuário cadastrado com este email!");
+    }
+    return user;
   }
 
-  public async findById(id: string): Promise<User | undefined> {
+  public async findById(id: string): Promise<User> {
     const user = await prisma.user.findUnique({
       where: { id },
     });
-    return user as unknown as User;
+
+    if (!user) {
+      throw new Error("Não existe usuário com este id!");
+    }
+
+    return user;
   }
 
   public async getAll(): Promise<[User]> {
     const users = await prisma.user.findMany();
-    console.log("users", users);
     return users as [User];
   }
 }
