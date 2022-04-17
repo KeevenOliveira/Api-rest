@@ -24,7 +24,7 @@ model User {
 model Product {
   id          String   @id @default(uuid())
   createdAt   DateTime @default(now())
-  name        String
+  name        String   @unique
   description String
   quantity    Int
   image       String?

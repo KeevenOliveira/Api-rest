@@ -11,7 +11,6 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {
-    semi: ["error", "always"],
     quotes: ["error", "double"],
     "linebreak-style": 0,
     "import/extensions": [
@@ -26,6 +25,7 @@ module.exports = {
     ],
     "import/no-unresolved": [2, { caseSensitive: false }],
     "class-methods-use-this": 0,
+    semi: 0,
   },
   settings: {
     "import/resolver": {

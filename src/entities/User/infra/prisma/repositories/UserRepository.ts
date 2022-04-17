@@ -13,7 +13,7 @@ class UsersRepository implements IUserRepository {
         token: "keeven",
       },
     });
-    return user as unknown as User;
+    return user;
   }
 
   public async findByEmail(email: string): Promise<User> {
