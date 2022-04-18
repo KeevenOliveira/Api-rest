@@ -1,7 +1,8 @@
-/* eslint-disable object-curly-newline */
 import { Request, Response } from "express";
 import CreateProductUseCase from "../../../useCases/CreateProductUseCase";
 import GetAllProductsUseCase from "../../../useCases/GetAllProductsUseCase";
+import GetProductByIdUseCase from "../../../useCases/GetProductByIdUseCase";
+import GetProductByNameUseCase from "../../../useCases/GetProductByNameUseCase";
 
 class ProductController {
   public async createProduct(
@@ -36,6 +37,38 @@ class ProductController {
       const products = await getAllProducts.execute();
 
       return response.status(201).json(products);
+    } catch (error) {
+      return response.status(404).json({ error: (error as Error).message });
+    }
+  }
+
+  public async getProductById(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    try {
+      const { id } = request.params;
+      const getProductById = new GetProductByIdUseCase();
+
+      const product = await getProductById.execute(id);
+
+      return response.status(201).json(product);
+    } catch (error) {
+      return response.status(404).json({ error: (error as Error).message });
+    }
+  }
+
+  public async getProductByName(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    try {
+      const { name } = request.params;
+      const getProductById = new GetProductByNameUseCase();
+
+      const product = await getProductById.execute(name);
+
+      return response.status(201).json(product);
     } catch (error) {
       return response.status(404).json({ error: (error as Error).message });
     }

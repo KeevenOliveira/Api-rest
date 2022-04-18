@@ -4,6 +4,7 @@ import GetAllUsersUseCase from "../../../useCases/GetAllUsersUseCase";
 import GetUserByIdUseCase from "../../../useCases/GetUserByIdUseCase";
 import GetUserByEmailUseCase from "../../../useCases/GetUserByEmailUseCase";
 import DeleteUserUseCase from "../../../useCases/DeleteUserUseCase";
+
 class UsersController {
   public async createUser(
     request: Request,

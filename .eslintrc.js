@@ -27,6 +27,7 @@ module.exports = {
     "class-methods-use-this": 0,
     semi: 0,
     "comma-dangle": 0,
+    "object-curly-newline": 0,
   },
   settings: {
     "import/resolver": {
