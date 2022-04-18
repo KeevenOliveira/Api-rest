@@ -7,4 +7,5 @@ export default interface IUserRepository {
   findByEmail(email: string): Promise<User>;
   create(data: ICreateUser): Promise<User>;
   getAll(): Promise<User[]>;
+  deleteUserById(id: string): Promise<User>;
 }

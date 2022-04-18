@@ -42,6 +42,16 @@ class UsersRepository implements IUserRepository {
     const users = await prisma.user.findMany();
     return users as [User];
   }
+
+  public async deleteUserById(id: string): Promise<User> {
+    const user = await prisma.user.delete({
+      where: { id },
+    });
+    if (!user) {
+      throw new Error("Não existe usuário cadastrado com esse Id!");
+    }
+    return user;
+  }
 }
 
 export default UsersRepository;

@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import express, { Request, Response } from "express";
 import routes from "../shared/infra/http/routes";
 // import usersRouter from "../entities/User/infra/http/routes/users.routes";

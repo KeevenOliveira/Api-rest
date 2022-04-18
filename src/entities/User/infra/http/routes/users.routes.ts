@@ -15,4 +15,6 @@ usersRouter.get("/email/:email", usersController.getUserByEmail);
 
 usersRouter.get("/id/:id", usersController.getUserById);
 
+usersRouter.delete("/id/:id", usersController.deleteUserById);
+
 export default usersRouter;

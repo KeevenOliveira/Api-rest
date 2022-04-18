@@ -3,7 +3,7 @@ import CreateUserUseCase from "../../../useCases/CreateUserUseCase";
 import GetAllUsersUseCase from "../../../useCases/GetAllUsersUseCase";
 import GetUserByIdUseCase from "../../../useCases/GetUserByIdUseCase";
 import GetUserByEmailUseCase from "../../../useCases/GetUserByEmailUseCase";
-
+import DeleteUserUseCase from "../../../useCases/DeleteUserUseCase";
 class UsersController {
   public async createUser(
     request: Request,
@@ -61,6 +61,20 @@ class UsersController {
       const getUserByEmail = new GetUserByEmailUseCase();
       const user = getUserByEmail.execute(email);
       return user;
+    } catch (error) {
+      return response.status(404).json({ error: (error as Error).message });
+    }
+  }
+
+  public async deleteUserById(request: Request, response: Response) {
+    try {
+      const { id } = request.params;
+
+      const deleteUserById = new DeleteUserUseCase();
+
+      const userDeleted = await deleteUserById.execute(id);
+
+      return response.status(200).json(userDeleted);
     } catch (error) {
       return response.status(404).json({ error: (error as Error).message });
     }
