@@ -5,7 +5,7 @@ class GetAllProductsUseCase {
   public async execute(): Promise<Product[]> {
     const productRepository = new ProductRepository();
 
-    const products = await productRepository.getAll();
+    const products = await productRepository.getAllProducts();
 
     return products;
   }

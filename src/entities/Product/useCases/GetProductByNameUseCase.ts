@@ -5,7 +5,7 @@ class GetProductByNameUseCase {
   public async execute(name: string): Promise<Product> {
     const productRepository = new ProductRepository();
 
-    const product = productRepository.findByName(name);
+    const product = productRepository.findProductByName(name);
 
     return product;
   }

@@ -11,8 +11,7 @@ class CreateProductUseCase {
     quantity,
   }: ICreateProductDTO): Promise<Product> {
     const productRepository = new ProductRepository();
-
-    const productCreated = await productRepository.create({
+    const productCreated = await productRepository.createProduct({
       description,
       image,
       name,

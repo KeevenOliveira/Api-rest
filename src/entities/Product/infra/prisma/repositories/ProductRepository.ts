@@ -4,7 +4,7 @@ import IProductRepository from "entities/Product/repositories/IProductRepository
 import prisma from "../../../../../shared/infra/prisma/client";
 
 class ProductRepository implements IProductRepository {
-  public async create({
+  public async createProduct({
     description,
     image,
     name,
@@ -23,7 +23,7 @@ class ProductRepository implements IProductRepository {
     return product;
   }
 
-  public async findById(id: string): Promise<Product> {
+  public async findProductById(id: string): Promise<Product> {
     const product = await prisma.product.findUnique({
       where: { id },
     });
@@ -33,7 +33,7 @@ class ProductRepository implements IProductRepository {
     return product;
   }
 
-  public async findByName(name: string): Promise<Product> {
+  public async findProductByName(name: string): Promise<Product> {
     const product = await prisma.product.findUnique({
       where: { name },
     });
@@ -43,9 +43,24 @@ class ProductRepository implements IProductRepository {
     return product;
   }
 
-  public async getAll(): Promise<Product[]> {
+  public async getAllProducts(): Promise<Product[]> {
     const products = await prisma.product.findMany();
+    console.log("products", products);
     return products;
+  }
+
+  public async deleteProductById(id: string): Promise<Product> {
+    const productDeleted = await prisma.product.delete({
+      where: {
+        id,
+      },
+    });
+
+    if (!productDeleted) {
+      throw new Error("Não existe produto cadastrado com esse id!");
+    }
+
+    return productDeleted;
   }
 }
 

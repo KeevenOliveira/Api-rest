@@ -1,14 +1,14 @@
 import { Product } from "@prisma/client";
 import ProductRepository from "../infra/prisma/repositories/ProductRepository";
 
-class GetProductByIdUseCase {
+class DeleteProductUseCase {
   public async execute(id: string): Promise<Product> {
     const productRepository = new ProductRepository();
 
-    const product = productRepository.findProductById(id);
+    const productDeleted = await productRepository.deleteProductById(id);
 
-    return product;
+    return productDeleted;
   }
 }
 
-export default GetProductByIdUseCase;
+export default DeleteProductUseCase;

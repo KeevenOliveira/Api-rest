@@ -13,4 +13,6 @@ productsRouter.get("/id/:id", productController.getProductById);
 
 productsRouter.get("/name/:name", productController.getProductByName);
 
+productsRouter.delete("/id/:id", productController.deleteProductById);
+
 export default productsRouter;

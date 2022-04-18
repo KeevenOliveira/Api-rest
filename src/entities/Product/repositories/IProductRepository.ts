@@ -3,8 +3,9 @@ import { Product } from "@prisma/client";
 import { ICreateProductDTO } from "../dto/ICreateProductDTO";
 
 export default interface IProductRepository {
-  findById(id: string): Promise<Product>;
-  findByName(name: string): Promise<Product>;
-  create(data: ICreateProductDTO): Promise<Product>;
-  getAll(): Promise<Product[]>;
+  findProductById(id: string): Promise<Product>;
+  findProductByName(name: string): Promise<Product>;
+  createProduct(data: ICreateProductDTO): Promise<Product>;
+  getAllProducts(): Promise<Product[]>;
+  deleteProductById(id: string): Promise<Product>;
 }

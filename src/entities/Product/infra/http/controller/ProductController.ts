@@ -3,6 +3,7 @@ import CreateProductUseCase from "../../../useCases/CreateProductUseCase";
 import GetAllProductsUseCase from "../../../useCases/GetAllProductsUseCase";
 import GetProductByIdUseCase from "../../../useCases/GetProductByIdUseCase";
 import GetProductByNameUseCase from "../../../useCases/GetProductByNameUseCase";
+import DeleteProductUseCase from "../../../useCases/DeleteProductByIdUseCase";
 
 class ProductController {
   public async createProduct(
@@ -69,6 +70,22 @@ class ProductController {
       const product = await getProductById.execute(name);
 
       return response.status(201).json(product);
+    } catch (error) {
+      return response.status(404).json({ error: (error as Error).message });
+    }
+  }
+
+  public async deleteProductById(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    try {
+      const { id } = request.params;
+      const deleteProduct = new DeleteProductUseCase();
+
+      const product = await deleteProduct.execute(id);
+
+      return response.status(200).json(product);
     } catch (error) {
       return response.status(404).json({ error: (error as Error).message });
     }
