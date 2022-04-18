@@ -7,9 +7,9 @@ const usersRouter = Router();
 
 const usersController = new UsersController();
 
-usersRouter.get("/", usersController.getAll);
+usersRouter.get("/", usersController.getAllUsers);
 
-usersRouter.post("/", usersController.create);
+usersRouter.post("/", usersController.createUser);
 
 usersRouter.get("/email/:email", usersController.getUserByEmail);
 

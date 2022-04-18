@@ -5,11 +5,14 @@ import GetUserByIdUseCase from "../../../useCases/GetUserByIdUseCase";
 import GetUserByEmailUseCase from "../../../useCases/GetUserByEmailUseCase";
 
 class UsersController {
-  public async create(request: Request, response: Response): Promise<Response> {
+  public async createUser(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
     try {
       const { name, email, password } = request.body;
-      const createUserService = new CreateUserUseCase();
-      const user = await createUserService.execute({
+      const createUserUseCase = new CreateUserUseCase();
+      const user = await createUserUseCase.execute({
         name,
         email,
         password,
@@ -28,10 +31,13 @@ class UsersController {
     }
   }
 
-  public async getAll(request: Request, response: Response): Promise<Response> {
+  public async getAllUsers(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
     try {
-      const getAllUsersService = new GetAllUsersUseCase();
-      const users = await getAllUsersService.execute();
+      const getAllUsersUseCase = new GetAllUsersUseCase();
+      const users = await getAllUsersUseCase.execute();
       return response.status(200).json(users);
     } catch (error) {
       return response.status(400).json({ error: (error as Error).message });

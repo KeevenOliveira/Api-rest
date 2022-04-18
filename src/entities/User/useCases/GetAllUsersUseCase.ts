@@ -5,7 +5,7 @@ class GetAllUsersService {
   public async execute(): Promise<User[]> {
     const userRepository = new UsersRepository();
 
-    const users = userRepository.getAll();
+    const users = await userRepository.getAll();
 
     return users;
   }

@@ -26,6 +26,7 @@ module.exports = {
     "import/no-unresolved": [2, { caseSensitive: false }],
     "class-methods-use-this": 0,
     semi: 0,
+    "comma-dangle": 0,
   },
   settings: {
     "import/resolver": {
