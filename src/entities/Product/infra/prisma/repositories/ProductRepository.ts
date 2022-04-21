@@ -45,7 +45,6 @@ class ProductRepository implements IProductRepository {
 
   public async getAllProducts(): Promise<Product[]> {
     const products = await prisma.product.findMany();
-    console.log("products", products);
     return products;
   }
 

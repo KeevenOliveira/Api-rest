@@ -2,10 +2,13 @@
 /* eslint-disable import/no-unresolved */
 import { Router } from "express";
 import UsersController from "../controller/UsersController";
+import rateLimiter from "../../../../../shared/infra/http/middlewares/rateLimiter";
 
 const usersRouter = Router();
 
 const usersController = new UsersController();
+
+usersRouter.use(rateLimiter);
 
 usersRouter.get("/", usersController.getAllUsers);
 
