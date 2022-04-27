@@ -36,3 +36,6 @@ CREATE TABLE "purchase" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "product_name_key" ON "product"("name");

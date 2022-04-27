@@ -1,6 +1,6 @@
 import express from "express";
+import 'dotenv/config'
 import routes from "../shared/infra/http/routes";
-// import usersRouter from "../entities/User/infra/http/routes/users.routes";
 import rateLimiter from "../shared/infra/http/middlewares/rateLimiter";
 
 const app = express();
