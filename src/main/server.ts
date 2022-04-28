@@ -17,11 +17,20 @@ Sentry.init({
   ],
   tracesSampleRate: 1.0,
 });
-app.use(express.json());
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
+
+app.use(express.json());
+
 app.use(routes);
+
+app.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
+
+
 app.use(Sentry.Handlers.errorHandler());
+
 
 app.listen(8080, () => {
   console.log("Server starting on port 8080 🚀");

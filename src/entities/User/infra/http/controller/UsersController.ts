@@ -28,7 +28,7 @@ class UsersController {
       };
       return response.status(200).json(userWithoutPassword);
     } catch (error) {
-      return response.status(400).json({ error: (error as Error).message });
+      return response.status(500).json({ error: (error as Error).message });
     }
   }
 
@@ -41,7 +41,7 @@ class UsersController {
       const users = await getAllUsersUseCase.execute();
       return response.status(200).json(users);
     } catch (error) {
-      return response.status(400).json({ error: (error as Error).message });
+      return response.status(500).json({ error: (error as Error).message });
     }
   }
 
