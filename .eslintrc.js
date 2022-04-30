@@ -11,10 +11,10 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {
-    quotes: ["error", "double"],
+    quotes: ["AppError", "double"],
     "linebreak-style": 0,
     "import/extensions": [
-      "error",
+      "AppError",
       "ignorePackages",
       {
         js: "never",

@@ -2,5 +2,5 @@
 package-lock.*
 yarn-lock.*
 .env
-yarn-error.log
+yarn-AppError.log
 yarn.lock

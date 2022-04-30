@@ -30,7 +30,7 @@ export default async function rateLimiter(
   try {
     await limiter.consume(request.ip);
     return next();
-  } catch (error) {
+  } catch (AppError) {
    return response.status(429).json({
       message: "You have exceeded the 10 request in 5 seconds limit!",
     });

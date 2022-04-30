@@ -27,8 +27,8 @@ class UsersController {
         createdAt: user.createdAt,
       };
       return response.status(200).json(userWithoutPassword);
-    } catch (error) {
-      return response.status(500).json({ error: (error as Error).message });
+    } catch (AppError) {
+      return response.status(500).json({ AppError: (AppError as AppError).message });
     }
   }
 
@@ -40,8 +40,8 @@ class UsersController {
       const getAllUsersUseCase = new GetAllUsersUseCase();
       const users = await getAllUsersUseCase.execute();
       return response.status(200).json(users);
-    } catch (error) {
-      return response.status(500).json({ error: (error as Error).message });
+    } catch (AppError) {
+      return response.status(500).json({ AppError: (AppError as AppError).message });
     }
   }
 
@@ -51,8 +51,8 @@ class UsersController {
       const getUserById = new GetUserByIdUseCase();
       const user = await getUserById.execute(id);
       return response.status(200).json(user);
-    } catch (error) {
-      return response.status(404).json({ error: (error as Error).message });
+    } catch (AppError) {
+      return response.status(404).json({ AppError: (AppError as AppError).message });
     }
   }
 
@@ -62,8 +62,8 @@ class UsersController {
       const getUserByEmail = new GetUserByEmailUseCase();
       const user = getUserByEmail.execute(email);
       return user;
-    } catch (error) {
-      return response.status(404).json({ error: (error as Error).message });
+    } catch (AppError) {
+      return response.status(404).json({ AppError: (AppError as AppError).message });
     }
   }
 
@@ -76,8 +76,8 @@ class UsersController {
       const userDeleted = await deleteUserById.execute(id);
 
       return response.status(200).json(userDeleted);
-    } catch (error) {
-      return response.status(404).json({ error: (error as Error).message });
+    } catch (AppError) {
+      return response.status(404).json({ AppError: (AppError as AppError).message });
     }
   }
 }

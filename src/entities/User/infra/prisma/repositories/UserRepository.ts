@@ -2,6 +2,7 @@ import { User } from "@prisma/client";
 import { ICreateUser } from "../../../dtos/ICreateUserDTO";
 import prisma from "../../../../../shared/infra/prisma/client";
 import IUserRepository from "../../../repositories/IUserRepository";
+import AppError from "../../../../../shared/errors/AppError";
 
 class UsersRepository implements IUserRepository {
   public async create({ name, password, email }: ICreateUser): Promise<User> {
@@ -21,7 +22,7 @@ class UsersRepository implements IUserRepository {
       where: { email },
     });
     if (!user) {
-      throw new Error("Não existe usuário cadastrado com este email!");
+      throw new AppError("Não existe usuário cadastrado com este email!", 404);
     }
     return user;
   }
@@ -32,7 +33,7 @@ class UsersRepository implements IUserRepository {
     });
 
     if (!user) {
-      throw new Error("Não existe usuário com este id!");
+      throw new AppError("Não existe usuário com este id!", 404);
     }
 
     return user;
@@ -48,7 +49,7 @@ class UsersRepository implements IUserRepository {
       where: { id },
     });
     if (!user) {
-      throw new Error("Não existe usuário cadastrado com esse Id!");
+      throw new AppError("Não existe usuário cadastrado com esse Id!", 404);
     }
     return user;
   }

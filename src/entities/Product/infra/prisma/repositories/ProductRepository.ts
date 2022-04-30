@@ -3,6 +3,8 @@ import { ICreateProductDTO } from "entities/Product/dto/ICreateProductDTO";
 import IProductRepository from "entities/Product/repositories/IProductRepository";
 import prisma from "../../../../../shared/infra/prisma/client";
 
+import AppError from "../../../../../shared/errors/AppError";
+
 class ProductRepository implements IProductRepository {
   public async createProduct({
     description,
@@ -28,7 +30,7 @@ class ProductRepository implements IProductRepository {
       where: { id },
     });
     if (!product) {
-      throw new Error("Não existe produto cadastrado com esse id!");
+      throw new AppError("Não existe produto cadastrado com esse id!", 404);
     }
     return product;
   }
@@ -38,7 +40,7 @@ class ProductRepository implements IProductRepository {
       where: { name },
     });
     if (!product) {
-      throw new Error("Não existe produto cadastrado com esse nome!");
+      throw new AppError("Não existe produto cadastrado com esse nome!", 404);
     }
     return product;
   }
@@ -56,7 +58,7 @@ class ProductRepository implements IProductRepository {
     });
 
     if (!productDeleted) {
-      throw new Error("Não existe produto cadastrado com esse id!");
+      throw new AppError("Não existe produto cadastrado com esse id!", 404);
     }
 
     return productDeleted;
