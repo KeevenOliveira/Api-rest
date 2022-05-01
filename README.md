@@ -9,3 +9,18 @@ Docker, Sentry, TypeScript, Postgres, Redis, Prisma, Express, DDoS, TDD, Clean A
 - Using <a href="https://redis.io/">Redis</a> to improve an static request;🚀
 - Implementing an request limiter <a href="https://github.com/animir/node-rate-limiter-flexible">(node-rate-limiter-flexible)</a> to prevent hack attack (DDoS);⚡
 - Using <a href="https://sentry.io/welcome/?utm_source=google&utm_medium=cpc&utm_campaign=9657410528&utm_content=g&utm_term=sentry&device=c&gclid=CjwKCAjwur-SBhB6EiwA5sKtjjwYXHWx7FTq_A5mUm8GcEUfk2MVfKyBknCs8SU6leo_qNZoR1y9ThoCemQQAvD_BwE&gclid=CjwKCAjwur-SBhB6EiwA5sKtjjwYXHWx7FTq_A5mUm8GcEUfk2MVfKyBknCs8SU6leo_qNZoR1y9ThoCemQQAvD_BwE">Sentry</a> to monitor erros in application.💥
+
+# How use this application?🚀
+- Clone this project; ✅
+- Run ***yarn*** to install all dependencies; ✅
+- ⚠ You must have installed *Docker* in your machine ⚠;
+- Start your docker, and use this command: ```docker-compose up -d```;✅
+- Now you can run ```yarn dev``` to begin application;
+- Have a fun!🤗
+
+## To Do List
+[ ] Use Redis to optimization of request;
+
+[ ] Create entity of Purchase;
+
+[ ] Implement authentication of user password.
