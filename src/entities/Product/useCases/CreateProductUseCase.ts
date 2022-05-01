@@ -1,6 +1,7 @@
 import { Product } from "@prisma/client";
 import ProductRepository from "../infra/prisma/repositories/ProductRepository";
 import { ICreateProductDTO } from "../dto/ICreateProductDTO";
+import { setRedis } from "../../../config/redisConfig";
 
 class CreateProductUseCase {
   public async execute({
@@ -10,6 +11,7 @@ class CreateProductUseCase {
     price,
     quantity,
   }: ICreateProductDTO): Promise<Product> {
+    await setRedis("products" , "");
     const productRepository = new ProductRepository();
     const productCreated = await productRepository.createProduct({
       description,

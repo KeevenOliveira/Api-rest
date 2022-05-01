@@ -14,7 +14,6 @@ class ProductController {
       const { description, name, price, image, quantity } = request.body;
 
       const createProductUseCase = new CreateProductUseCase();
-
       const productCreated = await createProductUseCase.execute({
         description,
         image,
