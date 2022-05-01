@@ -19,7 +19,7 @@ Docker, Sentry, TypeScript, Postgres, Redis, Prisma, Express, DDoS, TDD, Clean A
 - Have a fun!🤗
 
 ## To Do List
-[ ] Use Redis to optimization of request;
+[✔] Use Redis to optimization of request;
 
 [ ] Create entity of Purchase;
 
